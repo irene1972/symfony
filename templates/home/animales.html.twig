@@ -27,6 +27,36 @@
   {{ dump(aves) }}
   {{ aves.tipo ~ ' - ' ~  aves.raza }}
 
+  {# Condicionales #}
+  {% if aves.tipo == 'palomo' %}
+    <h1>Cuidado un palomo volador</h1>
+  {% else %}
+    <h2>No hay palomos a la vista</h2>
+  {% endif %}
 
+  {# Bucles #}
+  {% if animales|length >= 0 %}
+    <ul>
+      {% for animal in animales %}
+        <li>{{animal}}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h2>No hay animales</h2>
+  {% endif %}
+
+  {% for i in 2..10 %}
+    {{i}}<br/>
+  {% endfor %}
+
+  {# Evaluar variables: si empieza por... #}
+  {% if aves.color starts with 'g' %}
+    <h1>Empieza por 'g'</h1>
+  {% endif %}
+
+  {# Evaluar variables: si acaba por... #}
+  {% if aves.color ends with 'is' %}
+    <h1>Acaba por 'is'</h1>
+  {% endif %}
 
 {% endblock %}
