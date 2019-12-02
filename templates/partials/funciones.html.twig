@@ -16,3 +16,13 @@
   {% for i in range(0, 6, 2) %}
     {{ i }}
   {% endfor %}<br/>
+
+  <h1>Filtros</h1>
+  {{ animales|length }}<br/>
+
+  {% set email = '     email@email.com   ' %}
+  {{ email }}
+  {{ dump(email) }}
+  {{ dump(email|trim) }}
+  {{ dump(email|trim|upper) }}
+  {{ dump(email|trim|lower) }}
