@@ -1,0 +1,18 @@
+  <h1>Funciones</h1>
+  <h3>{{nombre}}</h3>
+  {# Funciones predefinidas #}
+  {{ min([9, 11, 6, 99, 2]) }}<br/>
+  {{ max([9, 11, 6, 99, 2]) }}<br/>
+
+  {{ dump(animales) }}
+  {{ random(animales) }}<br/>
+
+  {# outputs 0, 1, 2, 3, #}
+  {% for i in range(0, 3) %}
+    {{ i }}
+  {% endfor %}<br/>
+
+  {# outputs 0, 2, 4, 6 #}
+  {% for i in range(0, 6, 2) %}
+    {{ i }}
+  {% endfor %}<br/>
