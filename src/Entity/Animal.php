@@ -4,44 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Animales
- *
- * @ORM\Table(name="animales")
- * @ORM\Entity
- */
-class Animales
+class Animal
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
+
     private $id;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="tipo", type="string", length=255, nullable=true, options={"default"="NULL"})
-     */
     private $tipo = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="color", type="string", length=255, nullable=true, options={"default"="NULL"})
-     */
     private $color = 'NULL';
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="raza", type="string", length=255, nullable=true, options={"default"="NULL"})
-     */
     private $raza = 'NULL';
-
+    
     public function getId(): ?int
     {
         return $this->id;

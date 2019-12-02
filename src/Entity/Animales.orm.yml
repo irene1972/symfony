@@ -1,4 +1,4 @@
-App\Entity\Animales:
+App\Entity\Animal:
     type: entity
     table: animales
     id:
