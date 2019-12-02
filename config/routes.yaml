@@ -5,3 +5,4 @@ index:
 animales:
     path: /animales/{nombre}
     controller: App\Controller\HomeController::animales
+    defaults: { nombre: 'Caballito de Mar'}
