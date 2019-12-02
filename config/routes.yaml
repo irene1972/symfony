@@ -6,3 +6,7 @@ animales:
     path: /animales/{nombre}/{apellidos}
     controller: App\Controller\HomeController::animales
     defaults: { nombre: 'Irene', apellidos: 'Olmos'}
+    methods: [GET]
+    requirements:
+      nombre: '[a-zA-Z]+'
+      apellidos: '[0-9]+'
