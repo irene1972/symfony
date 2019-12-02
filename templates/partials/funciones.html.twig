@@ -26,3 +26,10 @@
   {{ dump(email|trim) }}
   {{ dump(email|trim|upper) }}
   {{ dump(email|trim|lower) }}
+
+    <h1>Extensiones personalizadas</h1>
+    {{multiplicar_function(2)}}
+    {{multiplicar_function(2)|raw}}
+    <hr>
+    {{12|multiplicar_filtro}}
+    {{12|multiplicar_filtro|raw}}

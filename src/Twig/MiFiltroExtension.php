@@ -14,19 +14,26 @@ class MiFiltroExtension extends AbstractExtension
             // If your filter generates SAFE HTML, you should add a third
             // parameter: ['is_safe' => ['html']]
             // Reference: https://twig.symfony.com/doc/2.x/advanced.html#automatic-escaping
-            new TwigFilter('filter_name', [$this, 'doSomething']),
+            new TwigFilter('multiplicar_filtro', [$this, 'multiplicar']),
         ];
     }
 
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('function_name', [$this, 'doSomething']),
+            new TwigFunction('multiplicar_function', [$this, 'multiplicar']),
         ];
     }
 
-    public function doSomething($value)
+    public function multiplicar($numero)
     {
-        // ...
+        $tabla = "";
+        $tabla = "<h1>Tabla del $numero</h1>";
+
+        for( $i=0; $i<10; $i++ ){
+            $tabla .= "$i x $numero = " . ($i * $numero) . "<br/>";
+        }
+
+        return $tabla;
     }
 }
