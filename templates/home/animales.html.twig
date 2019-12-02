@@ -5,7 +5,7 @@
 {% block cabecera %}
   {{parent()}}
 
-  <h1>Animales</h1>
+  <h2>{{ title }}</h2>
 {% endblock %}
 
 {% block contenido %}
@@ -14,4 +14,10 @@
   <h2>Tu nombre es: {{ nombre }}</h2>
   <h3>Tus apellidos son: {{ apellidos }}</h3>
   #}
+
+  {# Crear variable en twig #}
+  {% set perro = 'Pastor alemán' %}
+  <h4>{{ perro }}</h4>
+
+
 {% endblock %}
