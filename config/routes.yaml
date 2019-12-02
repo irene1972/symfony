@@ -2,3 +2,6 @@ index:
     path: /inicio
     controller: App\Controller\HomeController::index
 
+animales:
+    path: /animales
+    controller: App\Controller\HomeController::animales

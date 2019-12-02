@@ -17,4 +17,12 @@ class HomeController extends AbstractController
             'hello' => 'Hola mundo con Symfony 4',
         ]);
     }
+
+    public function animales()
+    {
+        $title='Bienvenido a la página de Animales';
+        return $this->render('home/animales.html.twig',[
+            'title' => $title
+        ]);
+    }
 }
