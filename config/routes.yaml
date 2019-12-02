@@ -8,5 +8,9 @@ animales:
     defaults: { nombre: 'Irene', apellidos: 'Olmos'}
     methods: [GET]
     requirements:
-      nombre: '[a-zA-Z]+'
-      apellidos: '[0-9]+'
+      nombre: '[a-zA-Z ]+'
+      apellidos: '[a-zA-Z ]+'
+
+redirigir:
+    path: /redirigir
+    controller: App\Controller\HomeController::redirigir

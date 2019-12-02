@@ -27,4 +27,22 @@ class HomeController extends AbstractController
             'apellidos' => $apellidos,
         ]);
     }
+
+    public function redirigir(){
+        //metodo1
+        //*******/
+        //return $this->redirectToRoute('index');
+
+        //return $this->redirectToRoute('index', array(), 301);
+        
+        // return $this->redirectToRoute('animales', [
+        //     'nombre' => 'Juan Pedro',
+        //     'apellidos' => 'Lopez',
+        // ]);
+
+        //metodo2
+        //*******/
+        return $this->redirect('https://translate.google.es/');
+
+    }
 }
