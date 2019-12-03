@@ -11,7 +11,7 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    {% if animales is defined %}
+    {# {% if animales is defined %} #}
         {{dump(animales)}}
         <ul>ANIMALES:
         {% for animal in animales %}
@@ -26,14 +26,12 @@
             <li>{{animal.tipo}}</li>
         {% endfor %}
         </ul>
-    {% endif %}
+    {# {% endif %} #}
 
-    {% if animal_concreto is defined %}
+    {# {% if animal_concreto is defined %}
         {{dump(animal_concreto)}}
         <ul>ANIMAL CONCRETO:
-        {# {% for animal in animal_concreto %} #}
             <li>{{animal_concreto.tipo}}</li>
-        {# {% endfor %} #}
         </ul>
     {% endif %}
 
@@ -44,7 +42,7 @@
             <li>{{animal_concreto.tipo}}</li>
         {% endfor %}
         </ul>
-    {% endif %}
+    {% endif %} #}
 
 </div>
 {% endblock %}

@@ -21,41 +21,40 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    public function find_one_by_condition()
-    {
-        $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
+    // public function find_one_by_condition()
+    // {
+    //     $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
 
-        $animal_concreto = $animal_repo->findOneBy([
-            //'tipo' => 'Vaca',
-            'raza' => 'africana',
-        ]);
+    //     $animal_concreto = $animal_repo->findOneBy([
+    //         'raza' => 'africana',
+    //     ]);
 
-        var_dump( $animal_concreto );
+    //     var_dump( $animal_concreto );
 
-        return $this->render('animal/index.html.twig', [
-            'controller_name' => 'AnimalController',
-            'animal_concreto' => $animal_concreto
-        ]);
-    }
+    //     return $this->render('animal/index.html.twig', [
+    //         'controller_name' => 'AnimalController',
+    //         'animal_concreto' => $animal_concreto
+    //     ]);
+    // }
 
-    public function find_by_condition()
-    {
-        $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
+    // public function find_by_condition()
+    // {
+    //     $animal_repo = $this->getDoctrine()->getRepository(Animal::class);
 
-        $animales_concretos = $animal_repo->findBy([
-            //'tipo' => 'Vaca',
-            'raza' => 'africana',
-        ], [
-            'id' => 'DESC'
-        ]);
+    //     $animales_concretos = $animal_repo->findBy([
+    //         //'tipo' => 'Vaca',
+    //         'raza' => 'africana',
+    //     ], [
+    //         'id' => 'DESC'
+    //     ]);
 
-        var_dump( $animales_concretos );
+    //     var_dump( $animales_concretos );
 
-        return $this->render('animal/index.html.twig', [
-            'controller_name' => 'AnimalController',
-            'animales_concretos' => $animales_concretos
-        ]);
-    }
+    //     return $this->render('animal/index.html.twig', [
+    //         'controller_name' => 'AnimalController',
+    //         'animales_concretos' => $animales_concretos
+    //     ]);
+    // }
 
     public function save()
     {
