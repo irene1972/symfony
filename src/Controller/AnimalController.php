@@ -81,7 +81,29 @@ class AnimalController extends AbstractController
         return new Response('El animal guardado tiene el id: ' . $animal->getId());
     }
 
-    public function animal( $id )
+    public function animal( Animal $animal )
+    {
+        //return new Response('Hola desde la acción animal');
+
+        //1. Cargar repositorio. Me permite traer todos los métodos de consulta que tiene nuestro modelo por defecto + los que hayamos añadido si le configuramos un repositorio
+        //$animal_repo = $this->getDoctrine()->getRepository(Animal::class);
+
+        //2. Consulta
+        //$animal = $animal_repo->find( $id );
+
+        //IMPORTANTE!! -> de esta manera nos saltamos los pasos 1 y 2. Al pasar el parámetro como objeto de tipo animal él solo hacel el find y devuelve el resultado o no pasándole igualmente el id por parámetro
+
+        //3. Comprobar si el resultado es correcto
+        if( !$animal ){
+            $message = 'El animal no existe';
+        }else{
+            $message = 'Tu animal elegido es: ' . $animal->getTipo() .  ' - ' . $animal->getRaza();
+        }
+
+        return new Response( $message );
+    }
+
+    public function animal_original( $id )
     {
         //return new Response('Hola desde la acción animal');
 
