@@ -22,3 +22,7 @@ animal_index:
 animal_save:
     path: /animal/save
     controller: App\Controller\AnimalController::save
+
+animal_detail:
+    path: /animal/{id}
+    controller: App\Controller\AnimalController::animal
