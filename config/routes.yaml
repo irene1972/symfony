@@ -23,13 +23,13 @@ animal_save:
     path: /animal/save
     controller: App\Controller\AnimalController::save
 
-animal_find_one_by_condition:
-    path: /animal/find_one_by_condition
-    controller: App\Controller\AnimalController::find_one_by_condition
+# animal_find_one_by_condition:
+#     path: /animal/find_one_by_condition
+#     controller: App\Controller\AnimalController::find_one_by_condition
 
-animal_find_by_condition:
-    path: /animal/find_by_condition
-    controller: App\Controller\AnimalController::find_by_condition
+# animal_find_by_condition:
+#     path: /animal/find_by_condition
+#     controller: App\Controller\AnimalController::find_by_condition
 
 animal_detail:
     path: /animal/{id}
