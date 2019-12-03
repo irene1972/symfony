@@ -11,21 +11,40 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    {{dump(animales)}}
+    {% if animales is defined %}
+        {{dump(animales)}}
+        <ul>ANIMALES:
+        {% for animal in animales %}
+            {# <li>
+                <ul>
+                    <li>{{animal.id}}</li>
+                    <li>{{animal.tipo}}</li>
+                    <li>{{animal.color}}</li>
+                    <li>{{animal.raza}}</li>
+                </ul>
+            </li> #}
+            <li>{{animal.tipo}}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 
-    <ul>
-    {% for animal in animales %}
-        {# <li>
-            <ul>
-                <li>{{animal.id}}</li>
-                <li>{{animal.tipo}}</li>
-                <li>{{animal.color}}</li>
-                <li>{{animal.raza}}</li>
-            </ul>
-        </li> #}
-        <li>{{animal.tipo}}</li>
-    {% endfor %}
-    </ul>
+    {% if animal_concreto is defined %}
+        {{dump(animal_concreto)}}
+        <ul>ANIMAL CONCRETO:
+        {# {% for animal in animal_concreto %} #}
+            <li>{{animal_concreto.tipo}}</li>
+        {# {% endfor %} #}
+        </ul>
+    {% endif %}
+
+    {% if animales_concretos is defined %}
+        {{dump(animales_concretos)}}
+        <ul>ANIMALES CONCRETOS:
+        {% for animal_concreto in animales_concretos %}
+            <li>{{animal_concreto.tipo}}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 
 </div>
 {% endblock %}
