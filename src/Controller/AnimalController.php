@@ -40,13 +40,13 @@ class AnimalController extends AbstractController
                             ->orderBy('a.id', 'DESC')
                             ->getQuery();
         
-        $resulset = $qb->execute();
+        $resultset = $qb->execute();
 
-        //var_dump($resulset);
+        //var_dump($resultset);
         
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
-            'animales' => $resulset
+            'animales' => $resultset
         ]);
     }
 
@@ -58,13 +58,31 @@ class AnimalController extends AbstractController
         //$dql = "SELECT a FROM App\Entity\Animal a WHERE a.raza = 'americana'";
         $dql = "SELECT a FROM App\Entity\Animal a ORDER BY a.id DESC";
         $query = $em->createQuery( $dql );
-        $resulset = $query->execute();
+        $resultset = $query->execute();
 
-        //var_dump($resulset);
+        //var_dump($resultset);
         
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
-            'animales' => $resulset
+            'animales' => $resultset
+        ]);
+    }
+
+    public function irene_find_by_SQL()
+    {
+        $connection = $this->getDoctrine()->getConnection();
+        
+        $sql = "SELECT * FROM animales ORDER BY id DESC";
+        $prepare = $connection->prepare( $sql );
+        $prepare->execute();
+        //$resultset = $prepare->fetch();
+        $resultset = $prepare->fetchAll();
+
+        //var_dump($resultset);
+        
+        return $this->render('animal/index.html.twig', [
+            'controller_name' => 'AnimalController',
+            'animales' => $resultset
         ]);
     }
 

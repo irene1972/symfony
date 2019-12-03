@@ -39,6 +39,10 @@ animal_irene_find_by_DQL:
     path: /animal/irene_find_by_DQL
     controller: App\Controller\AnimalController::irene_find_by_DQL
 
+animal_irene_find_by_SQL:
+    path: /animal/irene_find_by_SQL
+    controller: App\Controller\AnimalController::irene_find_by_SQL
+
 animal_detail:
     path: /animal/{id}
     controller: App\Controller\AnimalController::animal
