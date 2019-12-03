@@ -45,6 +45,8 @@ class AnimalController extends AbstractController
         $animales_concretos = $animal_repo->findBy([
             //'tipo' => 'Vaca',
             'raza' => 'africana',
+        ], [
+            'id' => 'DESC'
         ]);
 
         var_dump( $animales_concretos );
