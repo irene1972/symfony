@@ -23,13 +23,21 @@ animal_save:
     path: /animal/save
     controller: App\Controller\AnimalController::save
 
-animal_find_one_by_condition:
+animal_irene_find_one_by_condition:
     path: /animal/irene_find_one_by_condition
     controller: App\Controller\AnimalController::irene_find_one_by_condition
 
-animal_find_by_condition:
+animal_irene_find_by_condition:
     path: /animal/irene_find_by_condition
     controller: App\Controller\AnimalController::irene_find_by_condition
+
+animal_irene_find_by_query_builder:
+    path: /animal/irene_find_by_query_builder
+    controller: App\Controller\AnimalController::irene_find_by_query_builder
+
+animal_irene_find_by_DQL:
+    path: /animal/irene_find_by_DQL
+    controller: App\Controller\AnimalController::irene_find_by_DQL
 
 animal_detail:
     path: /animal/{id}

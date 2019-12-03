@@ -18,53 +18,53 @@ class AnimalController extends AbstractController
         $animales = $animal_repo->findAll();
 
         //var_dump($animales);
+        
+        return $this->render('animal/index.html.twig', [
+            'controller_name' => 'AnimalController',
+            'animales' => $animales
+        ]);
+    }
 
-        //*********** */
-        //Query builder
-        //*********** */
+    public function irene_find_by_query_builder()
+    {
+        $doctrine = $this->getDoctrine();
+        $animal_repo = $doctrine->getRepository(Animal::class);
+
         // $qb = $animal_repo->createQueryBuilder('a')
         //                     ->andWhere("a.raza = 'americana'")
         //                     ->getQuery();
         
-        //$qb = $animal_repo->createQueryBuilder('a')
-                            //->andWhere("a.raza = :raza")
-                            //->setParameter('raza', 'americana')
-                            //->orderBy('a.id', 'DESC')
-                            //->getQuery();
+        $qb = $animal_repo->createQueryBuilder('a')
+                            ->andWhere("a.raza = :raza")
+                            ->setParameter('raza', 'africana')
+                            ->orderBy('a.id', 'DESC')
+                            ->getQuery();
         
-        //$resulset = $qb->execute();
+        $resulset = $qb->execute();
 
         //var_dump($resulset);
-        //*********** */
         
-        //*********** */
-        //DQL
-        //*********** */
-        // $qb = $animal_repo->createQueryBuilder('a')
-        //                     ->andWhere("a.raza = 'americana'")
-        //                     ->getQuery();
-        
-        //$qb = $animal_repo->createQueryBuilder('a')
-                            //->andWhere("a.raza = :raza")
-                            //->setParameter('raza', 'americana')
-                            //->orderBy('a.id', 'DESC')
-                            //->getQuery();
-        
-        //$resulset = $qb->execute();
+        return $this->render('animal/index.html.twig', [
+            'controller_name' => 'AnimalController',
+            'animales' => $resulset
+        ]);
+    }
 
-        //var_dump($resulset);
-        //*********** */
+    public function irene_find_by_DQL()
+    {
+        $doctrine = $this->getDoctrine();
+        $em = $doctrine->getManager();
         
         //$dql = "SELECT a FROM App\Entity\Animal a WHERE a.raza = 'americana'";
         $dql = "SELECT a FROM App\Entity\Animal a ORDER BY a.id DESC";
         $query = $em->createQuery( $dql );
         $resulset = $query->execute();
 
-        var_dump($resulset);
-
+        //var_dump($resulset);
+        
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
-            'animales' => $animales
+            'animales' => $resulset
         ]);
     }
 
