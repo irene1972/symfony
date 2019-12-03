@@ -52,7 +52,7 @@ class Animal
         return $this->tipo;
     }
 
-    public function setTipo(?string $tipo): self
+    public function setTipo(string $tipo): self
     {
         $this->tipo = $tipo;
 
@@ -64,7 +64,7 @@ class Animal
         return $this->color;
     }
 
-    public function setColor(?string $color): self
+    public function setColor(string $color): self
     {
         $this->color = $color;
 
@@ -76,7 +76,7 @@ class Animal
         return $this->raza;
     }
 
-    public function setRaza(?string $raza): self
+    public function setRaza(string $raza): self
     {
         $this->raza = $raza;
 
