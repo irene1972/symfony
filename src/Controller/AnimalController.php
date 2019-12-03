@@ -159,4 +159,25 @@ class AnimalController extends AbstractController
         return new Response($message);
 
     }
+
+    public function delete( Animal $animal ){
+        //IMPORTANTE!! Cuidado, si le pasamos un id que no existe o ya fue borrado explota porque no puede hacer uso de la variable $animal.
+        //var_dump($animal);
+
+        if( $animal && is_object( $animal ) ){
+
+            $em = $this->getDoctrine()->getManager();
+            $em->remove( $animal );
+            $em->flush();
+
+            $message = "Animal borrado correctamente";
+        }else{
+            $message = "Animal no encontrado";
+        }
+
+        
+
+        return new Response( $message );
+
+    }
 }
