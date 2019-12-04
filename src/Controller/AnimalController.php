@@ -15,14 +15,9 @@ class AnimalController extends AbstractController
         $animal_repo = $doctrine->getRepository(Animal::class);
         //$em = $doctrine->getManager();
 
-        //$animales = $animal_repo->findAll();
+        $animales = $animal_repo->findAll();
 
         //var_dump($animales);
-        
-
-        //REPOSITORIO
-        $animals = $animal_repo->findByRaza( 'DESC' );
-        var_dump($animals);
 
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
@@ -52,6 +47,31 @@ class AnimalController extends AbstractController
         return $this->render('animal/index.html.twig', [
             'controller_name' => 'AnimalController',
             'animales' => $resultset
+        ]);
+    }
+
+    public function irene_find_by_query_builder_using_repo()
+    {
+        $doctrine = $this->getDoctrine();
+        $animal_repo = $doctrine->getRepository(Animal::class);
+        
+        //$qb = $animal_repo->createQueryBuilder('a')
+                            //->andWhere("a.raza = :raza")
+                            //->setParameter('raza', 'africana')
+                            //->orderBy('a.id', 'DESC')
+                            //->getQuery();
+        
+        //$resultset = $qb->execute();
+
+        //var_dump($resultset);
+        
+        //REPOSITORIO
+        $animales = $animal_repo->findByRaza( 'DESC' );
+        //var_dump($animales);
+        
+        return $this->render('animal/index.html.twig', [
+            'controller_name' => 'AnimalController',
+            'animales' => $animales
         ]);
     }
 

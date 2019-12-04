@@ -35,6 +35,10 @@ animal_irene_find_by_query_builder:
     path: /animal/irene_find_by_query_builder
     controller: App\Controller\AnimalController::irene_find_by_query_builder
 
+animal_irene_find_by_query_builder_using_repo:
+    path: /animal/irene_find_by_query_builder_using_repo
+    controller: App\Controller\AnimalController::irene_find_by_query_builder_using_repo
+
 animal_irene_find_by_DQL:
     path: /animal/irene_find_by_DQL
     controller: App\Controller\AnimalController::irene_find_by_DQL
