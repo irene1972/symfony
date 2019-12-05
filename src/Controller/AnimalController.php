@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -151,7 +152,17 @@ class AnimalController extends AbstractController
         ]);
     }
 
-    public function save()
+    public function save( Request $request )
+    {
+        //var_dump( $request );
+        //var_dump( $request->get('form') );
+        //$arr_form = $request->get('form');
+        //$tipo = $arr_form['tipo'];
+
+        //die('www');
+    }
+
+    public function save_original()
     {
         //return new Response('Hola desde la acción save');
 
@@ -276,13 +287,13 @@ class AnimalController extends AbstractController
 
     }
 
-    public function crearAnimal(){
+    public function crearAnimal( Request $request ){
 
         $animal = new Animal();
 
         //creamos un formulario para guardar un objeto animal
         $form = $this->createFormBuilder( $animal )
-                        ->setAction($this->generateUrl('animal_save'))  //cuando no quiero que los datos se reciban en este método sino que quiero enviarlos en otro le cambiamos el ACTION (la ruta 'animal_save' es una url extraída de routes.yaml)
+                        // ->setAction($this->generateUrl('animal_save'))  //cuando no quiero que los datos se reciban en este método sino que quiero enviarlos en otro le cambiamos el ACTION (la ruta 'animal_save' es una url extraída de routes.yaml)
                         // ->setMethod('POST')     //no sería necesario porque el método por defecto es POST
                             ->add('tipo',TextType::class, [
                                 'label' => 'Tipo de animal',
@@ -295,9 +306,29 @@ class AnimalController extends AbstractController
                             ])
                         ->getForm();
 
+        //********************************************************************* */
+        // Recuperamos la información submiteada y la llevamos hasta la plantilla
+        //********************************************************************* */
+        $form->handleRequest( $request );   //recoge los datos del formulario y los adjunta al objeto Animal
+
+        if( $form->isSubmitted() ){
+
+            //var_dump($animal);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($animal);
+            $em->flush();
+
+            //Session flash
+            $session = new Session();
+            $session->getFlashBag()->add('message', 'Animal creado');
+
+            return $this->redirectToRoute( 'crear_animal' );
+
+        }
+
         return $this->render('animal/crear-animal.html.twig', [
             'form' => $form->createView()
-        ]); //le pasamos una vista donde vamos a rederizar los datos
+        ]); //le pasamos una vista donde vamos a renderizar los datos
 
     }
 

@@ -1,7 +1,28 @@
+{# {{ dump(app.session.flashbag().get('message')) }}
+{**********}
+{{ dump(app.session.flashbag()) }}
+{**********}
+{{ dump(app.session) }}
+{**********}
+{{ dump(app) }} #}
+
 <h1>Formulario con Symfony4</h1>
-<!--iniciamos formulario-->
+
+{# comprobamos que exista y si es así mostramos mensaje de éxito #}
+{#
+{% if ( app.session.flashbag().get('message')[0] ) %}
+  {{ app.session.flashbag().get('message')[0] }}
+{% endif %}
+#}
+
+{# como pueden haber varios mensajes, mostramos todos los mensajes de éxito #}
+{% for  message in app.session.flashbag().get('message') %}
+  <strong>{{ message }}</strong>
+{% endfor %}
+
+{# iniciamos formulario #}
 {{form_start(form)}}
-<!--imprimimos los campos del formulario-->
+{# imprimimos los campos del formulario #}
 {{form_widget(form)}}
-<!--cerramos formulario-->
+{# cerramos formulario #}
 {{form_end(form)}}

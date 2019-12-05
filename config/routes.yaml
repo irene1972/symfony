@@ -19,10 +19,6 @@ animal_index:
     path: /animal/index
     controller: App\Controller\AnimalController::index
 
-animal_save:
-    path: /animal/save
-    controller: App\Controller\AnimalController::save
-
 animal_irene_find_one_by_condition:
     path: /animal/irene_find_one_by_condition
     controller: App\Controller\AnimalController::irene_find_one_by_condition
@@ -46,6 +42,11 @@ animal_irene_find_by_DQL:
 animal_irene_find_by_SQL:
     path: /animal/irene_find_by_SQL
     controller: App\Controller\AnimalController::irene_find_by_SQL
+
+animal_save:
+    path: /animal/save
+    controller: App\Controller\AnimalController::save
+    methods: [POST]
 
 animal_detail:
     path: /animal/{id}
