@@ -311,7 +311,7 @@ class AnimalController extends AbstractController
         //********************************************************************* */
         $form->handleRequest( $request );   //recoge los datos del formulario y los adjunta al objeto Animal
 
-        if( $form->isSubmitted() ){
+        if( $form->isSubmitted() && $form->isValid() ){
 
             //var_dump($animal);
             $em = $this->getDoctrine()->getManager();
