@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Animal;
+use App\Form\AnimalType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -288,6 +289,34 @@ class AnimalController extends AbstractController
     }
 
     public function crearAnimal( Request $request ){
+
+        $animal = new Animal();
+
+        //en lugar de crear aquí el formulario, llamaos a la clase de este form y lo creamos con un método de ésta
+        $form = $this->createForm( AnimalType::class, $animal );
+
+        $form->handleRequest( $request );
+
+        if( $form->isSubmitted() && $form->isValid() ){
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($animal);
+            $em->flush();
+
+            $session = new Session();
+            $session->getFlashBag()->add('message', 'Animal creado');
+
+            return $this->redirectToRoute( 'crear_animal' );
+
+        }
+
+        return $this->render('animal/crear-animal.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+    }
+
+    public function crearAnimal_original( Request $request ){
 
         $animal = new Animal();
 
