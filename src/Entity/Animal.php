@@ -45,7 +45,10 @@ class Animal
      * 
      * @ORM\Column(name="raza", type="string", length=255)
      * @Assert\NotBlank
-     * @Assert\Regex("/[a-zA-Z]+/")
+     * @Assert\Regex(
+     *  pattern="/[a-zA-Z]+/",
+     *  message="La raza debe estar formada por letras"
+     * )
      */
     private $raza;
     
