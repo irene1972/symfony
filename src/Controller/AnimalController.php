@@ -6,13 +6,17 @@ use App\Entity\Animal;
 use App\Form\AnimalType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\Routing\Annotation\Route;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
-
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Constraints\Email;
 
 class AnimalController extends AbstractController
 {
@@ -358,6 +362,31 @@ class AnimalController extends AbstractController
         return $this->render('animal/crear-animal.html.twig', [
             'form' => $form->createView()
         ]); //le pasamos una vista donde vamos a renderizar los datos
+
+    }
+
+    public function validarEmail( $email ){
+
+        var_dump($email);
+        
+        $validator = Validation::createValidator();
+        $errores = $validator->validate( $email,[
+            new Email()
+        ] );
+
+        if( count($errores) != 0 ){
+            
+            echo "El email NO HA SUPERADO la validación<br/>";
+
+            foreach( $errores as $error ){
+                echo $error->getMessage() . '<br/>';
+            }
+
+        }else{
+            echo "El email HA SIDO VALIDADO correctamente";
+        }
+
+        die('sss');
 
     }
 
