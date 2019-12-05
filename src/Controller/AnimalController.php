@@ -283,7 +283,7 @@ class AnimalController extends AbstractController
         //creamos un formulario para guardar un objeto animal
         $form = $this->createFormBuilder( $animal )
                         ->setAction($this->generateUrl('animal_save'))  //cuando no quiero que los datos se reciban en este método sino que quiero enviarlos en otro le cambiamos el ACTION (la ruta 'animal_save' es una url extraída de routes.yaml)
-                        ->setMethod('POST')
+                        // ->setMethod('POST')     //no sería necesario porque el método por defecto es POST
                             ->add('tipo',TextType::class)
                             ->add('color',TextType::class)
                             ->add('raza',TextType::class)
