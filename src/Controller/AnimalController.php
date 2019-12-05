@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Animal;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
-use App\Entity\Animal;
+use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AnimalController extends AbstractController
 {
@@ -270,4 +275,25 @@ class AnimalController extends AbstractController
         return new Response( $message );
 
     }
+
+    public function crearAnimal(){
+
+        $animal = new Animal();
+
+        //creamos un formulario para guardar un objeto animal
+        $form = $this->createFormBuilder( $animal )
+                        ->setAction($this->generateUrl('animal_save'))  //cuando no quiero que los datos se reciban en este método sino que quiero enviarlos en otro le cambiamos el ACTION (la ruta 'animal_save' es una url extraída de routes.yaml)
+                        ->setMethod('POST')
+                            ->add('tipo',TextType::class)
+                            ->add('color',TextType::class)
+                            ->add('raza',TextType::class)
+                            ->add('submit',SubmitType::class)
+                        ->getForm();
+
+        return $this->render('animal/crear-animal.html.twig', [
+            'form' => $form->createView()
+        ]); //le pasamos una vista donde vamos a rederizar los datos
+
+    }
+
 }
