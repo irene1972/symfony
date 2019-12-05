@@ -284,10 +284,15 @@ class AnimalController extends AbstractController
         $form = $this->createFormBuilder( $animal )
                         ->setAction($this->generateUrl('animal_save'))  //cuando no quiero que los datos se reciban en este método sino que quiero enviarlos en otro le cambiamos el ACTION (la ruta 'animal_save' es una url extraída de routes.yaml)
                         // ->setMethod('POST')     //no sería necesario porque el método por defecto es POST
-                            ->add('tipo',TextType::class)
+                            ->add('tipo',TextType::class, [
+                                'label' => 'Tipo de animal',
+                            ])
                             ->add('color',TextType::class)
                             ->add('raza',TextType::class)
-                            ->add('submit',SubmitType::class)
+                            ->add('submit',SubmitType::class, [
+                                'label' => 'Crear animal',
+                                'attr' => ['class' => 'btn btn-success'],
+                            ])
                         ->getForm();
 
         return $this->render('animal/crear-animal.html.twig', [
